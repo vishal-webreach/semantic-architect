@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Semantic SEO Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body { transition: background-color 0.3s ease, color 0.3s ease; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+
+        .loader {
+            border-top-color: #6366f1;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Preview Area Content Formatting */
+        .prose-output h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
+        .prose-output h2 { font-size: 1.75rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose-output h3 { font-size: 1.35rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose-output p { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem; }
+        .prose-output ul, .prose-output ol { margin-bottom: 1.25rem; padding-left: 1.5rem; list-style-type: disc; }
+        .prose-output blockquote { border-left: 4px solid #6366f1; padding-left: 1rem; font-style: italic; margin: 1.5rem 0; opacity: 0.8; }
+        .prose-output a { color: #6366f1; text-decoration: underline; font-weight: 500; }
+        
+        .dark .prose-output h1, .dark .prose-output h2, .dark .prose-output h3 { color: #f1f5f9; }
+        .dark .prose-output p, .dark .prose-output li { color: #cbd5e1; }
+        .dark .prose-output a { color: #818cf8; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
+
+    <div class="max-w-7xl mx-auto px-4 py-6 md:py-8 h-full flex flex-col">
+        <!-- Header -->
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/20">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight leading-none">AI-Driven Semantic SEO Architect</h1>
+                    <div id="env-tag" class="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-60">Detecting...</div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div id="status-pill" class="hidden px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 animate-pulse">
+                    Processing
+                </div>
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all ml-auto sm:ml-0 shadow-sm">
+                    <svg id="sun-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.071 16.071l.707.707M7.929 7.929l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+                    <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-[calc(100vh-160px)] items-stretch">
+            
+            <!-- Left Side: Input & Settings -->
+            <div class="flex flex-col gap-4 h-full overflow-y-auto pr-1 custom-scrollbar">
+                <!-- Text Area -->
+                <div class="glass-panel rounded-2xl p-5 shadow-sm flex flex-col shrink-0 min-h-[250px]">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Input Raw Content</h2>
+                        <button id="clear-btn" class="text-[10px] text-slate-400 hover:text-red-500 font-bold transition-colors">Clear</button>
+                    </div>
+                    <textarea 
+                        id="raw-input" 
+                        placeholder="Paste your unformatted content here..."
+                        class="w-full flex-grow bg-transparent resize-none focus:outline-none text-slate-700 dark:text-slate-300 text-base leading-relaxed border-none p-0"
+                    ></textarea>
+                </div>
+
+                <!-- API CONFIGURATION PANEL -->
+                <div class="glass-panel rounded-2xl p-5 shadow-sm space-y-4 shrink-0">
+                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 pb-2">Settings & SEO Engine</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1">Base URL (API)</label>
+                            <input type="text" id="base-url-input" class="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1">Model Name</label>
+                            <input type="text" id="model-input" class="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1">API Key</label>
+                            <input type="password" id="api-key-input" placeholder="Secret Key" class="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1">Conversion Mode</label>
+                            <select id="tone-select" class="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all cursor-pointer">
+                                <option value="professional, authoritative">Expert / Authoritative</option>
+                                <option value="STRICT_HIERARCHY">Strict (H1 -> H2 -> H3s)</option>
+                                <option value="conversational, friendly">Conversational</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SITEMAP LINKING FIELD -->
+                    <div class="p-4 rounded-xl bg-indigo-50/50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-900/30 space-y-3">
+                        <div>
+                            <label class="block text-[10px] font-bold text-indigo-400 dark:text-indigo-300 uppercase mb-1.5 ml-1">Sitemap URL (XML)</label>
+                            <input type="text" id="sitemap-url-input" placeholder="https://example.com/sitemap.xml" class="w-full bg-white dark:bg-slate-800 border border-indigo-200 dark:border-indigo-900 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                            <p class="text-[9px] text-slate-400 mt-2 italic">We will fetch this sitemap to find live, valid URLs to link to.</p>
+                        </div>
+                    </div>
+
+                    <div id="proxy-settings" class="p-3 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/30">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 flex justify-between">
+                            CORS Proxy
+                            <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline lowercase font-normal italic">Enable Proxy Access</a>
+                        </label>
+                        <input type="text" id="proxy-input" placeholder="https://cors-anywhere.herokuapp.com/" class="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                    </div>
+                    
+                    <button id="convert-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-3 active:scale-[0.98]">
+                        <span>Architect SEO HTML</span>
+                        <div id="loading-spinner" class="hidden loader rounded-full border-2 border-t-2 border-white/30 h-4 w-4"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side: Output -->
+            <div class="flex flex-col h-full lg:min-h-0">
+                <div class="glass-panel rounded-2xl shadow-sm flex flex-col flex-grow overflow-hidden">
+                    <!-- Tabs Nav -->
+                    <div class="flex items-center justify-between bg-white/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 px-2 shrink-0">
+                        <div class="flex">
+                            <button id="tab-preview" class="px-5 py-4 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 transition-all">PREVIEW</button>
+                            <button id="tab-code" class="px-5 py-4 text-xs font-bold border-b-2 border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 transition-all">HTML SOURCE</button>
+                        </div>
+                        <button id="copy-btn" class="mr-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-[10px] font-bold px-3 py-1.5 rounded-lg transition-all flex items-center gap-2">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                            COPY
+                        </button>
+                    </div>
+
+                    <!-- Output Container with Scroll -->
+                    <div class="flex-grow overflow-y-auto bg-white dark:bg-slate-900/40 custom-scrollbar p-6 md:p-10" id="output-wrapper">
+                        <div id="rendered-content" class="prose-output max-w-none">
+                            <div class="flex flex-col items-center justify-center h-64 text-slate-300 dark:text-slate-700 italic">
+                                <svg class="w-12 h-12 mb-3 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <p class="text-sm">Architected content will appear here.</p>
+                            </div>
+                        </div>
+                        <div id="code-content" class="hidden font-mono text-[13px] text-indigo-700 dark:text-indigo-300 whitespace-pre-wrap leading-relaxed select-all"></div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const rawInput = document.getElementById('raw-input');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const baseUrlInput = document.getElementById('base-url-input');
+        const modelInput = document.getElementById('model-input');
+        const sitemapUrlInput = document.getElementById('sitemap-url-input');
+        const proxyInput = document.getElementById('proxy-input');
+        const envTag = document.getElementById('env-tag');
+        const convertBtn = document.getElementById('convert-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const toneSelect = document.getElementById('tone-select');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const statusPill = document.getElementById('status-pill');
+        const renderedContent = document.getElementById('rendered-content');
+        const codeContent = document.getElementById('code-content');
+        const tabPreview = document.getElementById('tab-preview');
+        const tabCode = document.getElementById('tab-code');
+        const copyBtn = document.getElementById('copy-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+
+        const DEFAULT_PROXY = "https://cors-anywhere.herokuapp.com/";
+        const DEFAULT_URL = "https://integrate.api.nvidia.com/v1";
+        const DEFAULT_MODEL = "openai/gpt-oss-120b";
+        let isLocal = false;
+
+        // Dark Mode Logic
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                updateThemeIcons(true);
+            } else {
+                updateThemeIcons(false);
+            }
+        }
+
+        function updateThemeIcons(isDark) {
+            document.getElementById('sun-icon').classList.toggle('hidden', !isDark);
+            document.getElementById('moon-icon').classList.toggle('hidden', isDark);
+        }
+
+        themeToggle.onclick = () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcons(isDark);
+        };
+
+        // Load & Save Preferences
+        function loadPrefs() {
+            apiKeyInput.value = localStorage.getItem('seo_arch_key') || '';
+            baseUrlInput.value = localStorage.getItem('seo_arch_url') || DEFAULT_URL;
+            modelInput.value = localStorage.getItem('seo_arch_model') || DEFAULT_MODEL;
+            sitemapUrlInput.value = localStorage.getItem('seo_arch_sitemap_url') || '';
+            proxyInput.value = localStorage.getItem('seo_arch_proxy') || '';
+        }
+
+        function savePrefs() {
+            localStorage.setItem('seo_arch_key', apiKeyInput.value);
+            localStorage.setItem('seo_arch_url', baseUrlInput.value);
+            localStorage.setItem('seo_arch_model', modelInput.value);
+            localStorage.setItem('seo_arch_sitemap_url', sitemapUrlInput.value);
+            localStorage.setItem('seo_arch_proxy', proxyInput.value);
+        }
+
+        function detectEnv() {
+            isLocal = window.location.hostname === "localhost" || 
+                      window.location.hostname === "127.0.0.1" || 
+                      window.location.protocol === "file:";
+            
+            if (isLocal) {
+                envTag.innerText = "LOCAL / PROXY ACTIVE";
+                envTag.classList.add('text-amber-500');
+                if (!proxyInput.value) proxyInput.value = DEFAULT_PROXY;
+            } else {
+                envTag.innerText = "WEB / DIRECT MODE";
+                envTag.classList.add('text-emerald-500');
+            }
+        }
+
+        initTheme();
+        loadPrefs();
+        detectEnv();
+
+        // Helper: Fetch and Parse Sitemap
+        async function getVerifiedUrls(sitemapUrl, proxy) {
+            if (!sitemapUrl) return [];
+            try {
+                const finalUrl = proxy ? proxy + sitemapUrl : sitemapUrl;
+                const response = await fetch(finalUrl);
+                if (!response.ok) throw new Error("Could not reach sitemap.");
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, "text/xml");
+                const locs = xmlDoc.getElementsByTagName("loc");
+                
+                // Deduplicate and return array of strings
+                const urls = Array.from(locs).map(l => l.textContent.trim());
+                return [...new Set(urls)].slice(0, 300); // Deduplicated and capped to avoid token overflow
+            } catch (err) {
+                console.error("Sitemap Fetch Error:", err);
+                return [];
+            }
+        }
+
+        // Tab Navigation
+        tabPreview.onclick = () => {
+            tabPreview.classList.add('border-indigo-600', 'text-indigo-600');
+            tabPreview.classList.remove('border-transparent', 'text-slate-400');
+            tabCode.classList.remove('border-indigo-600', 'text-indigo-600');
+            tabCode.classList.add('border-transparent', 'text-slate-400');
+            renderedContent.classList.remove('hidden');
+            codeContent.classList.add('hidden');
+        };
+
+        tabCode.onclick = () => {
+            tabCode.classList.add('border-indigo-600', 'text-indigo-600');
+            tabCode.classList.remove('border-transparent', 'text-slate-400');
+            tabPreview.classList.remove('border-indigo-600', 'text-indigo-600');
+            tabPreview.classList.add('border-transparent', 'text-slate-400');
+            codeContent.classList.remove('hidden');
+            renderedContent.classList.add('hidden');
+        };
+
+        clearBtn.onclick = () => {
+            rawInput.value = "";
+            renderedContent.innerHTML = `<div class="flex flex-col items-center justify-center h-64 text-slate-300 dark:text-slate-700 italic"><p class="text-sm">Content cleared.</p></div>`;
+            codeContent.innerText = "";
+            currentHtml = "";
+        };
+
+        const setLoading = (loading) => {
+            convertBtn.disabled = loading;
+            loadingSpinner.classList.toggle('hidden', !loading);
+            statusPill.classList.toggle('hidden', !loading);
+            convertBtn.querySelector('span').innerText = loading ? 'ARCHITECTING...' : 'ARCHITECT SEO HTML';
+        };
+
+        async function architectContent(text, toneValue) {
+            const userApiKey = apiKeyInput.value.trim();
+            const manualProxy = proxyInput.value.trim();
+            const baseUrl = baseUrlInput.value.trim();
+            const modelName = modelInput.value.trim();
+            const sitemapUrl = sitemapUrlInput.value.trim();
+            
+            if (!userApiKey) throw new Error("Please enter your API Key.");
+            savePrefs();
+
+            // 1. Fetch live UNIQUE URLs from Sitemap
+            const verifiedUrls = await getVerifiedUrls(sitemapUrl, manualProxy || (isLocal ? DEFAULT_PROXY : ""));
+
+            let toneDescription = toneValue;
+            let strictRule = "";
+
+            if (toneValue === "STRICT_HIERARCHY") {
+                toneDescription = "completely literal and verbatim with forced sequence";
+                strictRule = `
+                ### CRITICAL ZERO-EDIT & SEQUENCE MODE ###
+                1. THE FIRST heading found MUST be <h1>.
+                2. THE SECOND heading found MUST be <h2>.
+                3. ALL OTHER headings found MUST be <h3>.
+                4. You MUST NOT change a single word of the existing text.
+                `;
+            }
+
+            // Internal Linking logic
+            let linkingInstruction = "";
+            if (verifiedUrls.length > 0) {
+                linkingInstruction = `
+                ### VERIFIED INTERNAL LINKING POOL ###
+                You MUST use this provided list of UNIQUE URLs for internal linking. 
+                Choose 3 to 5 keywords in the article that best relate to these pages and link them.
+                
+                URL POOL (DO NOT INVENT OTHERS):
+                ${verifiedUrls.join('\n')}
+
+                STRICT RULES:
+                1. DEDUPLICATION: You MUST NOT use the same URL more than once. Each link in the article must point to a different verified page.
+                2. ACCURACY: Match anchor text strictly to the most contextually relevant URL from the pool.
+                3. PROPER PLACEMENT: Only add links within <p> tags. 
+                4. EXCLUSION: NEVER add links inside headings (H1, H2, H3).
+                5. SEO RELEVANCE: Prioritize linking high-value keywords that naturally map to the destination URL.
+                `;
+            }
+
+            const systemPrompt = `You are an SEO Content Engineer. Transform raw text into a structured HTML blog post. Use semantic tags like <p>, <ul>, <li>, and <blockquote>. Output ONLY raw HTML. No markdown code blocks.
+            Heading focus: ${toneDescription}.
+            ${strictRule}
+            ${linkingInstruction}`;
+
+            let API_URL = baseUrl.endsWith('/') ? baseUrl + 'chat/completions' : baseUrl + '/chat/completions';
+            
+            if (isLocal || (manualProxy && manualProxy !== "")) {
+                API_URL = manualProxy + API_URL;
+            }
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userApiKey}`
+                },
+                body: JSON.stringify({
+                    model: modelName,
+                    messages: [
+                        { role: "system", content: systemPrompt },
+                        { role: "user", content: text }
+                    ],
+                    temperature: 0.1,
+                    max_tokens: 4096
+                })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.error?.message || errData.message || `API Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
+
+        convertBtn.onclick = async () => {
+            const text = rawInput.value.trim();
+            if (!text) return alert("Please paste some content first!");
+
+            setLoading(true);
+
+            try {
+                const result = await architectContent(text, toneSelect.value);
+                currentHtml = result.replace(/```html|```/g, '').trim();
+                renderedContent.innerHTML = currentHtml;
+                codeContent.innerText = currentHtml;
+                tabPreview.click();
+            } catch (err) {
+                console.error(err);
+                renderedContent.innerHTML = `<div class="p-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-xl text-red-600 dark:text-red-400">
+                    <p class="font-bold text-xs uppercase tracking-widest mb-1">Architect Error</p>
+                    <p class="text-sm">${err.message}</p>
+                </div>`;
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        copyBtn.onclick = () => {
+            if (!currentHtml) return;
+            const temp = document.createElement('textarea');
+            temp.value = currentHtml;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<span class="text-emerald-500 font-bold">COPIED!</span>';
+            setTimeout(() => copyBtn.innerHTML = originalText, 2000);
+        };
+    </script>
+</body>
+</html>
