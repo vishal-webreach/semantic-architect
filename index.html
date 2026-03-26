@@ -132,6 +132,7 @@
                                 <option value="professional, authoritative">Expert / Authoritative</option>
                                 <option value="STRICT_HIERARCHY">Strict (H1 -> H2 -> H3s)</option>
                                 <option value="conversational, friendly">Conversational</option>
+                                <option value="CUSTOM_HTML">Custom (Use My Headings)</option>
                             </select>
                         </div>
                     </div>
@@ -355,6 +356,18 @@
                 `;
             }
 
+            if (toneValue === "CUSTOM_HTML") {
+                toneDescription = "preserve user-defined HTML structure exactly";
+                strictRule = `
+                ### CUSTOM STRUCTURE MODE ###
+                1. If the user already provided headings like h1, h2, h3 → DO NOT change them.
+                2. Keep the exact hierarchy and wording.
+                3. Only clean formatting and wrap plain text into proper HTML tags if missing.
+                4. Do NOT rewrite, rephrase, or reorder content.
+                5. Ensure valid HTML output only.
+                `;
+            }
+
             // Internal Linking logic
             let linkingInstruction = "";
             if (verifiedUrls.length > 0) {
@@ -375,8 +388,17 @@
                 `;
             }
 
-            const systemPrompt = `You are an SEO Content Engineer. Transform raw text into a structured HTML blog post. Use semantic tags like <p>, <ul>, <li>, and <blockquote>. Output ONLY raw HTML. No markdown code blocks.
-            Heading focus: ${toneDescription}.
+            const systemPrompt = `You are an SEO Content Engineer.
+
+            Transform raw text into clean, valid HTML.
+
+            Rules:
+            - Output ONLY raw HTML (no extra tags, no markdown)
+            - Preserve user intent strictly
+            - Fix formatting issues only
+
+            Heading behavior: 
+            ${toneDescription}
             ${strictRule}
             ${linkingInstruction}`;
 
